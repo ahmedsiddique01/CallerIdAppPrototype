@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/contactsFragment">
+
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.caller.id.app.prototype.presentation.contacts.ContactsFragment"
+        android:label="fragment_contacts"
+        tools:layout="@layout/fragment_contacts" />
+    <fragment
+        android:id="@+id/blockListFragment"
+        android:name="com.caller.id.app.prototype.presentation.blocklist.BlockListFragment"
+        android:label="fragment_block_list"
+        tools:layout="@layout/fragment_block_list" />
+    <fragment
+        android:id="@+id/incomingFragment"
+        android:name="com.caller.id.app.prototype.presentation.incoming.IncomingFragment"
+        android:label="fragment_incoming"
+        tools:layout="@layout/fragment_incoming" />
+</navigation>
