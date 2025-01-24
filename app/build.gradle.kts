@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.androidx.navigation.safeargs)
+    alias(libs.plugins.google.dagger.hilt)
+    alias(libs.plugins.google.devtools.ksp)
 }
 
 android {
@@ -37,6 +39,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+    testOptions {
+        unitTests {
+            isReturnDefaultValues = true
+        }
+    }
+
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -64,4 +72,20 @@ dependencies {
     implementation(libs.permissionx)
 
 
+    implementation(libs.hilt.android)
+
+    ksp(libs.hilt.compiler)
+
+    implementation(libs.glide)
+
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    testImplementation(libs.mockk)
+
+    testImplementation(libs.kotest.assertions.core)
+    testApi(libs.kotlin.test)
+
+    implementation(libs.circleimageview)
+
+    implementation(libs.materialtextdrawableforandroid)
 }

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +19,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.caller.id.app.prototype.R
 import com.caller.id.app.prototype.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(
             window.decorView
-        ) { v, insets ->
+        ) { _, insets ->
             val windowInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             findViewById<View>(R.id.main).updatePadding(bottom = windowInsets.bottom)
 
@@ -84,6 +85,8 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostContainer) as NavHostFragment
         navController = navHostFragment.navController
         binding.bottomNav.setupWithNavController(navController)
+
+
     }
 
 }
