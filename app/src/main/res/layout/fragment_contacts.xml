@@ -29,6 +29,7 @@
         app:layout_constraintTop_toBottomOf="@id/textViewTitle">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_search"
@@ -52,13 +53,65 @@
         android:id="@+id/buttonReceiveCall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_marginStart="20dp"
-        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/primary"
         android:drawableEnd="@drawable/ic_incoming_call"
         android:text="@string/receive_a_call"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/scrollUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_up"
+        app:tint="@color/white"
+        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
+        app:backgroundTint="@color/primary"
+        android:contentDescription="@string/go_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutNoResult"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchTextInputLayout">
+
+        <ImageView
+            android:id="@+id/imageViewNoResult"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/no_result_found"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.35"
+            app:srcCompat="@drawable/ic_oops" />
+
+
+        <TextView
+            android:id="@+id/textViewNoResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="20dp"
+            android:text="@string/no_result_found"
+            android:textColor="@color/text_color"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageViewNoResult" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

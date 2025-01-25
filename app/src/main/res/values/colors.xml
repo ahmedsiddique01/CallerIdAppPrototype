@@ -7,4 +7,5 @@
     <color name="text_color">#000000</color>
     <color name="block_button_color_red">#F44336</color>
     <color name="unblock_button_color_green">#139E00</color>
+    <color name="icon_color">#FFFFFF</color>
 </resources>

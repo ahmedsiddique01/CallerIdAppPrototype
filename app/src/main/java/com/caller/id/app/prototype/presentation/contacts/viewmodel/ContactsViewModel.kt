@@ -1,11 +1,13 @@
 package com.caller.id.app.prototype.presentation.contacts.viewmodel
 
+import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.caller.id.app.prototype.domain.models.Contact
 import com.caller.id.app.prototype.domain.usecases.blocked.BlockedContactsUseCase
 import com.caller.id.app.prototype.domain.usecases.contacts.ContactsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -19,16 +21,17 @@ class ContactsViewModel @Inject constructor(
 ) : ViewModel() {
     private val _contacts = MutableStateFlow<List<Contact>?>(null)
     val contacts: StateFlow<List<Contact>?> get() = _contacts
+    var query: String = ""
 
     private val _blockedContacts = MutableStateFlow<List<Contact>?>(null)
 
     init {
-        fetchBlockedContacts()
+        fetchData()
     }
 
     fun fetchContacts() {
         viewModelScope.launch {
-            contactsUseCase.getContacts()
+            contactsUseCase.searchContacts(query)
                 .catch { e ->
                     e.printStackTrace()
                 }
@@ -51,13 +54,14 @@ class ContactsViewModel @Inject constructor(
                 }
                 .collect { blockedContacts ->
                     _blockedContacts.value = blockedContacts
-                    fetchContacts()
+                  //  fetchContacts()
                 }
         }
     }
 
     fun searchContacts(query: String) {
         viewModelScope.launch {
+            this@ContactsViewModel.query = query
             contactsUseCase.searchContacts(query)
                 .catch { e ->
                     // Handle errors
@@ -117,6 +121,14 @@ class ContactsViewModel @Inject constructor(
                 defaultContact()
             }
         } ?: defaultContact()
+
+    fun fetchData() {
+        viewModelScope.launch {
+            fetchBlockedContacts()
+            delay(300)
+            fetchContacts()
+        }
+    }
 }
 
 fun defaultContact() = Contact(

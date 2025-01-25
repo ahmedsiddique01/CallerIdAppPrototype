@@ -27,18 +27,12 @@ class ContactsAdapter(
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val contact = getItem(position)
-
         holder.binding.apply {
-
             textViewName.text = contact.name
             textViewNumber.text = contact.number
 
-            imageViewPhoto.load(
-                MaterialTextDrawable.with(imageViewPhoto.context)
-                    .text(contact.name)
-                    .shape(MaterialTextDrawable.MaterialShape.CIRCLE)
-                    .get()
-            )
+            MaterialTextDrawable.with(imageViewPhoto.context).text(contact.name).colorMode(MaterialTextDrawable.MaterialColorMode.LIGHT).into(imageViewPhoto)
+
 
             if (contact.isBlocked) {
                 buttonAction.text = buttonAction.context.getString(R.string.unblock)
@@ -48,7 +42,9 @@ class ContactsAdapter(
                         R.color.unblock_button_color_green
                     )
             } else {
+
                 buttonAction.text = buttonAction.context.getString(R.string.block)
+
                 buttonAction.backgroundTintList =
                     ContextCompat.getColorStateList(
                         buttonAction.context,
@@ -63,9 +59,7 @@ class ContactsAdapter(
                 }
                 onBlockUnblockClickListener.invoke(contact)
             }
-
         }
-
     }
 
     class ContactDiffCallback : DiffUtil.ItemCallback<Contact>() {

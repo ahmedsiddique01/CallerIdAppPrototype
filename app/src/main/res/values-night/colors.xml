@@ -5,4 +5,5 @@
     <color name="primary">#7DA5FF</color>
     <color name="divider">#FFFFFF</color>
     <color name="text_color">#FFFFFF</color>
+    <color name="icon_color">#000000</color>
 </resources>
