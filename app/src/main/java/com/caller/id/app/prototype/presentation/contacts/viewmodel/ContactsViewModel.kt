@@ -1,6 +1,5 @@
 package com.caller.id.app.prototype.presentation.contacts.viewmodel
 
-import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.caller.id.app.prototype.domain.models.Contact
@@ -46,7 +45,7 @@ class ContactsViewModel @Inject constructor(
         }
     }
 
-    private fun fetchBlockedContacts() {
+    fun fetchBlockedContacts() {
         viewModelScope.launch {
             blockedContactsUseCase.getBlockedContacts()
                 .catch { e ->
