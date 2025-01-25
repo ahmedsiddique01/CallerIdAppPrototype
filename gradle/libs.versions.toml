@@ -21,6 +21,7 @@ mockk = "1.12.5"
 kotestAssertionsCore = "5.4.2"
 kotlinxCoroutinesTest = "1.7.3"
 glide = "4.16.0"
+roomKtx = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,6 +47,10 @@ kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomKtx" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomKtx" }
+androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

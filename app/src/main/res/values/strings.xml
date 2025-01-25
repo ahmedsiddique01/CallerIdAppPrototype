@@ -5,5 +5,6 @@
     <string name="incoming_calls">Incoming Calls</string>
     <string name="block_list">Block List</string>
     <string name="block">Block</string>
-    <string name="search">Search</string>
+    <string name="search">Search Contacts..</string>
+    <string name="unblock">Unblock</string>
 </resources>

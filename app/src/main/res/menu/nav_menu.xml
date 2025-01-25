@@ -5,10 +5,6 @@
         android:icon="@drawable/ic_contacts"
         android:title="@string/contacts" />
     <item
-        android:id="@+id/incomingFragment"
-        android:icon="@drawable/ic_incoming_call"
-        android:title="@string/incoming_calls" />
-    <item
         android:id="@+id/blockListFragment"
         android:icon="@drawable/ic_block_list"
         android:title="@string/block_list" />

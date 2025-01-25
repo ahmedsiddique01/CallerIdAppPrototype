@@ -1,7 +1,7 @@
 package com.caller.id.app.prototype.usecases
 
 import com.caller.id.app.prototype.CoroutineTestRule
-import com.caller.id.app.prototype.data.ContactsRepository
+import com.caller.id.app.prototype.data.repository.contacts.ContactsRepository
 import com.caller.id.app.prototype.domain.models.Contact
 import com.caller.id.app.prototype.domain.usecases.contacts.ContactsUseCase
 import io.kotest.matchers.shouldBe

@@ -1,6 +1,6 @@
 package com.caller.id.app.prototype.domain.usecases.contacts
 
-import com.caller.id.app.prototype.data.ContactsRepository
+import com.caller.id.app.prototype.data.repository.contacts.ContactsRepository
 import com.caller.id.app.prototype.domain.models.Contact
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

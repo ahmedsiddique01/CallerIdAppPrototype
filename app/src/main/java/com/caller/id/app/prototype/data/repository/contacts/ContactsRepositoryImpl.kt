@@ -1,4 +1,4 @@
-package com.caller.id.app.prototype.data
+package com.caller.id.app.prototype.data.repository.contacts
 
 import android.content.ContentResolver
 import android.provider.ContactsContract

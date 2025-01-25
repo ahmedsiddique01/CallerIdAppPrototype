@@ -5,4 +5,5 @@
     <color name="primary">#7DA5FF</color>
     <color name="divider">#000000</color>
     <color name="block_button_color_red">#F44336</color>
+    <color name="unblock_button_color_green">#139E00</color>
 </resources>
