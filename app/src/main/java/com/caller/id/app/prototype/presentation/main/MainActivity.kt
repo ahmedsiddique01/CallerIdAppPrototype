@@ -63,18 +63,19 @@ class MainActivity : AppCompatActivity() {
             return@setOnApplyWindowInsetsListener CONSUMED
         }
 
-        setUpBottomNavigationBar()
+       // setUpBottomNavigationBar()
 
     }
 
     override fun onResume() {
         super.onResume()
         runPermissionTask()
-        navController.addOnDestinationChangedListener(listener)
     }
 
     override fun onPause() {
-        navController.removeOnDestinationChangedListener(listener)
+        if(::navController.isInitialized){
+            navController.removeOnDestinationChangedListener(listener)
+        }
         super.onPause()
     }
 
@@ -83,7 +84,9 @@ class MainActivity : AppCompatActivity() {
             .permissions(Manifest.permission.READ_CONTACTS)
             .request { allGranted, _, _ ->
                 if (allGranted) {
+                    setUpBottomNavigationBar()
                     viewModel.setPermissionTaskRunningFalse()
+
                 } else {
                     goToSettings()
                 }
@@ -100,8 +103,13 @@ class MainActivity : AppCompatActivity() {
     private fun setUpBottomNavigationBar() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostContainer) as NavHostFragment
-        navController = navHostFragment.navController
+        val inflater = navHostFragment.navController.navInflater
+        val navGraph = inflater.inflate(R.navigation.nav_graph)
+        navController = navHostFragment.navController.apply {
+            graph = navGraph
+        }
         binding.bottomNav.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener(listener)
     }
 
 
