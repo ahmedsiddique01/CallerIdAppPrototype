@@ -53,9 +53,12 @@ To run unit and instrumentation tests, you can use Android Studio's **Run** menu
 ```
 
 ## Demo Video
-
 You can watch a demo of the app below:
 [Click here to watch the demo](demo/demo_video.mp4)
+
+## APK
+You can get the apk:
+[Get APK](demo/output.apk)
 
 ---
 
