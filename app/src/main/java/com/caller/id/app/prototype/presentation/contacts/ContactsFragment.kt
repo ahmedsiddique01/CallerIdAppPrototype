@@ -1,7 +1,6 @@
 package com.caller.id.app.prototype.presentation.contacts
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -128,7 +127,6 @@ class ContactsFragment : BaseFragment<FragmentContactsBinding>() {
                             buttonReceiveCall.show()
                         }
 
-                        Log.d("Something", "onScrolled: $dy ")
                     }
                 })
             }
