@@ -12,7 +12,10 @@ import com.caller.id.app.prototype.databinding.ItemContactBinding
 import com.caller.id.app.prototype.domain.models.Contact
 import com.caller.id.app.prototype.utils.load
 
-class ContactsAdapter(private val onBlockUnblockClickListener: (Contact) -> Unit) :
+class ContactsAdapter(
+    private val isFromMain: Boolean = true,
+    private val onBlockUnblockClickListener: (Contact) -> Unit
+) :
     ListAdapter<Contact, ContactsAdapter.ContactViewHolder>(ContactDiffCallback()) {
 
     class ContactViewHolder(val binding: ItemContactBinding) : RecyclerView.ViewHolder(binding.root)
@@ -54,6 +57,10 @@ class ContactsAdapter(private val onBlockUnblockClickListener: (Contact) -> Unit
             }
 
             buttonAction.setOnClickListener {
+                if(isFromMain){
+                    contact.isBlocked = !contact.isBlocked
+                    notifyItemChanged(position)
+                }
                 onBlockUnblockClickListener.invoke(contact)
             }
 
@@ -63,7 +70,7 @@ class ContactsAdapter(private val onBlockUnblockClickListener: (Contact) -> Unit
 
     class ContactDiffCallback : DiffUtil.ItemCallback<Contact>() {
         override fun areItemsTheSame(oldItem: Contact, newItem: Contact): Boolean {
-            return oldItem.id.equals(newItem.id,false)
+            return oldItem.id.equals(newItem.id, false)
         }
 
         override fun areContentsTheSame(oldItem: Contact, newItem: Contact): Boolean {

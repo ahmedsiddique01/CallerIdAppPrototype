@@ -9,11 +9,29 @@
         android:id="@+id/contactsFragment"
         android:name="com.caller.id.app.prototype.presentation.contacts.ContactsFragment"
         android:label="fragment_contacts"
-        tools:layout="@layout/fragment_contacts" />
+        tools:layout="@layout/fragment_contacts" >
+        <action
+            android:id="@+id/action_contactsFragment_to_incomingFragment"
+            app:destination="@id/incomingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/blockListFragment"
         android:name="com.caller.id.app.prototype.presentation.blocklist.BlockListFragment"
         android:label="fragment_block_list"
         tools:layout="@layout/fragment_block_list" />
+    <fragment
+        android:id="@+id/incomingFragment"
+        android:name="com.caller.id.app.prototype.presentation.incoming.IncomingFragment"
+        android:label="fragment_incoming"
+        tools:layout="@layout/fragment_incoming" >
+        <argument
+            android:name="contact"
+            app:argType="com.caller.id.app.prototype.domain.models.Contact" />
+
+    </fragment>
 
 </navigation>

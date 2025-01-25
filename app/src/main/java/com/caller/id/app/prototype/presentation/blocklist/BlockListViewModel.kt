@@ -21,7 +21,7 @@ class BlockListViewModel @Inject constructor(private val blockedContactsUseCase:
         fetchBlockedContacts()
     }
 
-    fun fetchBlockedContacts() {
+    private fun fetchBlockedContacts() {
         viewModelScope.launch {
             blockedContactsUseCase.getBlockedContacts()
                 .catch { e ->
@@ -31,7 +31,7 @@ class BlockListViewModel @Inject constructor(private val blockedContactsUseCase:
                     blockedContacts.forEach{
                         it.isBlocked = true
                     }
-                    _blockedContacts.value = blockedContacts
+                    _blockedContacts.value = blockedContacts.sortedBy { it.name }
                 }
         }
     }
@@ -39,7 +39,7 @@ class BlockListViewModel @Inject constructor(private val blockedContactsUseCase:
     fun removeBlockedContact(contact: Contact) {
         viewModelScope.launch {
             blockedContactsUseCase.removeBlockedContact(contact)
-            fetchBlockedContacts()
+            _blockedContacts.value = _blockedContacts.value?.toMutableList()?.apply { remove(contact) }
         }
     }
 }

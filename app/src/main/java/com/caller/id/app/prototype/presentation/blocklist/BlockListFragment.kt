@@ -15,7 +15,7 @@ class BlockListFragment : BaseFragment<FragmentBlockListBinding>() {
 
     private val viewModel: BlockListViewModel by viewModels<BlockListViewModel>()
 
-    private val contactsAdapter:ContactsAdapter = ContactsAdapter{
+    private val contactsAdapter:ContactsAdapter = ContactsAdapter(false){
         viewModel.removeBlockedContact(it)
     }
 

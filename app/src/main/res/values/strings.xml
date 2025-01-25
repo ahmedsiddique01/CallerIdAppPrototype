@@ -7,4 +7,7 @@
     <string name="block">Block</string>
     <string name="search">Search Contacts..</string>
     <string name="unblock">Unblock</string>
+    <string name="receive_a_call">Receive Call</string>
+    <string name="is_calling">is calling</string>
+    <string name="end_call">End Call</string>
 </resources>

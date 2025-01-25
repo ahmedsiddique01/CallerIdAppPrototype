@@ -29,6 +29,15 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<MainViewModel>()
 
+    private val listener = NavController.OnDestinationChangedListener { _, destination, _ ->
+        if (destination.id == R.id.contactsFragment || destination.id == R.id.blockListFragment) {
+            binding.bottomNav.visibility = View.VISIBLE
+        } else {
+            binding.bottomNav.visibility = View.GONE
+
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -61,7 +70,14 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         runPermissionTask()
+        navController.addOnDestinationChangedListener(listener)
     }
+
+    override fun onPause() {
+        navController.removeOnDestinationChangedListener(listener)
+        super.onPause()
+    }
+
     private fun runPermissionTask() {
         PermissionX.init(this)
             .permissions(Manifest.permission.READ_CONTACTS)
@@ -82,11 +98,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpBottomNavigationBar() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostContainer) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostContainer) as NavHostFragment
         navController = navHostFragment.navController
         binding.bottomNav.setupWithNavController(navController)
-
-
     }
+
+
 
 }

@@ -38,7 +38,6 @@ class ContactsViewModel @Inject constructor(
                     val updatedContacts = contactList.map { contact ->
                         contact.copy(isBlocked = blockedIds.contains(contact.id))
                     }
-
                     _contacts.value = updatedContacts
                 }
         }
@@ -111,10 +110,17 @@ class ContactsViewModel @Inject constructor(
     }
 
     fun getRandomUnblockedNumber() =
-        _contacts.value?.filter { !it.isBlocked }?.random() ?: Contact(
-            "11",
-            "Johnson",
-            "+92 333 3333333"
-        )
-
+        _contacts.value?.filter { !it.isBlocked }?.let {
+            if (it.isNotEmpty()) {
+                it.random()
+            } else {
+                defaultContact()
+            }
+        } ?: defaultContact()
 }
+
+fun defaultContact() = Contact(
+    "11",
+    "Johnson",
+    "+92 333 3333333"
+)
